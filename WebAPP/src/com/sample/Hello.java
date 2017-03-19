@@ -1,5 +1,7 @@
 package com.sample;
 
+import java.io.File;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -42,13 +44,23 @@ public class Hello {
     @Path("/{arg}")
     @Produces(MediaType.TEXT_HTML)
     public String sayHtmlHello2(@PathParam(value="arg") String para) {
-        return "<html> " + "<title>" + "Hello " + para + "</title>"
+        File file = new File("C:/xampp/htdocs/games/" + para + "/index.html");
+        String link = "http://localhost/games/" + para + "/";
+        String optional = "";
+        if (file.exists()) {
+			optional = "\n<a href=\"" + link +"\" target=\"_blank\" title=\"進入遊戲\">進入遊戲</a>\n";
+					/*"<p id=\"result\" />\n<script>\n\n"
+		              + "document.getElementById(\"result\").innerHTML = '" 
+		              + path + "';\n"
+		              + "\n</script>\n";*/
+		}
+        
+    	return "<html> " + "<title>" + "Hello " + para + "</title>"
               + "<body><h1>" 
               + "Hello " + para
-              + "</h1><br><p id=\"result\" />\n<script>\n"
-              + "document.getElementById(\"result\").innerHTML = '" 
-              + para + "';\n"
-              + "\n</script>\n</body></html>" 
+              + "</h1><br>"
+              + optional
+              +"</body></html>" 
               + " ";
     }
     
