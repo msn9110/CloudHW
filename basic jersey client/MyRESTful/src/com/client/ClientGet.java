@@ -1,5 +1,7 @@
 package com.client;
 
+import javax.xml.crypto.Data;
+
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -7,8 +9,14 @@ import com.sun.jersey.api.client.WebResource;
 public class ClientGet {
 
 	public static void main(String[] args) {
-		try {
+		getData();
 
+	}
+	
+	public static String getData() {
+		String data = "";
+		try {
+			
 			Client client = Client.create();
 			String url1 = "http://localhost:8080/RESTfulExample/rest/json/metallica/get";
 			String apikey = "CWB-F4E67147-4625-4C0A-85F7-DB42AF404A38";
@@ -27,7 +35,7 @@ public class ClientGet {
 			}
 
 			String output = response.getEntity(String.class);
-
+			data = output;
 			System.out.println("Output from Server .... \n");
 			System.out.println(output);
 
@@ -36,7 +44,7 @@ public class ClientGet {
 			e.printStackTrace();
 
 		}
-
+		return data;
 	}
 
 }
