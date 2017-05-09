@@ -27,7 +27,7 @@
       <artifactId>jdk.tools</artifactId>
       <version>1.8.0</version>
       <scope>system</scope>
-      <systemPath>C:\Program Files\Java\jdk1.8.0_71\lib\tools.jar</systemPath>
+      <systemPath>C:\Program Files\Java\jdk1.8.0_31\lib\tools.jar</systemPath>
 	</dependency>
 	
 	<dependency>

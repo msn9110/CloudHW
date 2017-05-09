@@ -54,8 +54,9 @@ public class MyWordCount {
         conf.setReducerClass(Reduce.class);
         conf.setInputFormat(TextInputFormat.class);
         conf.setOutputFormat(TextOutputFormat.class);
-        FileInputFormat.setInputPaths(conf, new Path(args[0]));
-        FileOutputFormat.setOutputPath(conf, new Path(args[1]));
+        for(int i = 0; i < args.length - 1; i++)
+        	FileInputFormat.addInputPath(conf, new Path(args[i]));
+        FileOutputFormat.setOutputPath(conf, new Path(args[args.length - 1]));
         JobClient.runJob(conf);
     }
 }
